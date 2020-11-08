@@ -1,6 +1,6 @@
 extends "res://Scripts/Actor.gd"
 
-func interact():
+func interact(_direction):
 	print("Player is talking to a plant")
 
 

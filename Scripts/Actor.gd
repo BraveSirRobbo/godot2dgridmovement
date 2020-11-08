@@ -83,7 +83,7 @@ func move_to(target_position):
 
 
 # Define what an actor should do if it is interacted with in the child class.
-func interact():
+func interact(from_direction):
 	print("I am an Actor with no interact defined.")
 
 

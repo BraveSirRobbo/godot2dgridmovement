@@ -41,7 +41,7 @@ func request_interaction(requesting_object, direction):
 		return
 	if cell_obj.obj_type != CELL_TYPES.ACTOR:
 		return
-	cell_obj.interact()
+	cell_obj.interact(direction)
 
 
 func request_move(requesting_object, direction):
