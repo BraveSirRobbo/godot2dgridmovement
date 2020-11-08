@@ -1,3 +1,6 @@
+This fork is a pet project between Sardines and BraveSirRobbo
+
+
 # 2D Grid-based movement system
 Godot 3.1.1
 
