@@ -3,7 +3,6 @@
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Demo/character.png" type="Texture" id=2]
 
-
 [sub_resource type="Animation" id=1]
 resource_name = "bump"
 length = 0.25
