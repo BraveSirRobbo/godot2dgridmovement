@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="2DGridMovement"
+config/name="withOurPowersCombined"
 run/main_scene="res://Demo/Main.tscn"
 config/icon="res://icon.png"
 
