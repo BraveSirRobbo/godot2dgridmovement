@@ -9,7 +9,7 @@ func do_what_this_object_does():
 	print(name, " is an OverworldObject that doesn't do anything.")
 
 
-# An object can specify its condition for being preent in the scene by defining
+# An object can specify its condition for being present in the scene by defining
 # this method. By default, if an actor is present in the editor, it will be
 # present in game.
 func spawn_condition():

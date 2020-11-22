@@ -71,7 +71,7 @@ func update_overworld_obj_position(requesting_object, cell_start, cell_target):
 
 # removes an object from children array. The object should queue_free itself,
 # but we want the overworld to immediately know this cell is no longer occupied
-func remove_from_active(obj):
+func gtfo(obj):
 	children.erase(obj)
 
 
@@ -81,3 +81,8 @@ func process_actor_spawn_conditions():
 	for obj in get_children():
 		if !obj.spawn_condition():
 			obj.call_deferred("free")
+
+# checks if 2 splodges have been squished - open door
+func check_splodges():
+	if GameData.splodges_squished == 2:
+		$TransitionZone.open()
