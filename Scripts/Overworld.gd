@@ -53,6 +53,7 @@ func request_move(requesting_object, direction):
 		var cell_obj = get_overworld_obj(cell_target)
 		if cell_obj:
 			if cell_obj.obj_type == CELL_TYPES.OBJECT:
+				print("Trying to do what this object does")
 				cell_obj.do_what_this_object_does()
 				return update_overworld_obj_position(requesting_object,
 						cell_start, cell_target)

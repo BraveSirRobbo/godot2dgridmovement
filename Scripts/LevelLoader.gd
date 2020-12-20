@@ -13,7 +13,7 @@ func instantiate_player():
 	var index = GameData.zone_load_spawn_point
 
 	# If we somehow don't have that spawn point, fall back to 0
-	if not spawn_points[index]:
+	if len(spawn_points) <= index:
 		index = 0
 
 
