@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/LevelLoader.gd" type="Script" id=1]
 [ext_resource path="res://Demo/demo_tiles.tres" type="TileSet" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Demo/introtext.png" type="Texture" id=7]
 [ext_resource path="res://Scripts/DemoActor.gd" type="Script" id=8]
 [ext_resource path="res://Scenes/Objects/Splodge.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Demo/Splodge.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Demo/Totem.tscn" type="PackedScene" id=12]
 
 [node name="LevelBase" type="Node2D"]
 script = ExtResource( 1 )
@@ -51,6 +53,13 @@ position = Vector2( 56, 168 )
 
 [node name="Splodge2" parent="InteractiveTerrain" instance=ExtResource( 9 )]
 position = Vector2( 200, 72 )
+
+[node name="Splodge" parent="InteractiveTerrain" instance=ExtResource( 10 )]
+position = Vector2( 200, 56 )
+
+[node name="Totem" parent="InteractiveTerrain" instance=ExtResource( 12 )]
+position = Vector2( 232, 8 )
+obj_type = 0
 
 [node name="AlwaysOnTop" type="TileMap" parent="."]
 z_index = 4096

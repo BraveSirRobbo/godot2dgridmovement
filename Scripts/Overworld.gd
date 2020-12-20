@@ -50,15 +50,23 @@ func request_move(requesting_object, direction):
 	var cell_target_type = get_cellv(cell_target)
 
 	if cell_target_type == CELL_TYPES.EMPTY:
-		var cell_obj = get_overworld_obj(cell_target)
-		if cell_obj:
-			if cell_obj.obj_type == CELL_TYPES.OBJECT:
-				cell_obj.do_what_this_object_does()
+		var start_obj = get_overworld_obj(cell_start)
+		if start_obj:
+			if start_obj == $Splodge:
+				$Totem.despawn()
+		
+		var target_obj = get_overworld_obj(cell_target)
+		if target_obj:
+			if target_obj == $Splodge:
+				$Totem.spawn()
+			if target_obj.obj_type == CELL_TYPES.OBJECT:
+				target_obj.do_what_this_object_does()
 				return update_overworld_obj_position(requesting_object,
 						cell_start, cell_target)
 		else:
 			return update_overworld_obj_position(requesting_object,
 					cell_start, cell_target)
+
 
 func update_overworld_obj_position(requesting_object, cell_start, cell_target):
 	# The cell the moving object was in is now free
