@@ -1,9 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Scripts/Zones/LevelLoader.gd" type="Script" id=1]
-[ext_resource path="res://Scripts/Zones/Overworld.gd" type="Script" id=2]
-
-
+[ext_resource path="res://Scripts/LevelLoader.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Overworld.gd" type="Script" id=2]
 
 [node name="LevelBase" type="Node2D"]
 script = ExtResource( 1 )

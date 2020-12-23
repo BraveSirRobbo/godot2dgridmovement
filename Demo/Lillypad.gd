@@ -1,4 +1,4 @@
-extends "res://Scripts/Objects/OverworldObject.gd"
+extends "res://Scripts/OverworldObject.gd"
 
 func do_what_this_object_does():
 	print("Unlocking super secret house plants")
