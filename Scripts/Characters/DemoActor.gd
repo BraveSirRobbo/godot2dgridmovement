@@ -1,4 +1,4 @@
-extends "res://Scripts/Actor.gd"
+extends "res://Scripts/Characters/Actor.gd"
 
 
 func interact(from_direction):

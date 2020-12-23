@@ -1,4 +1,4 @@
-extends "res://Scripts/OverworldObject.gd"
+extends "res://Scripts/Objects/OverworldObject.gd"
 
 export var target_scene = ""
 export var target_spawn_point = 0

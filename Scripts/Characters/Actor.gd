@@ -1,4 +1,4 @@
-extends "res://Scripts/OverworldObject.gd"
+extends "res://Scripts/Objects/OverworldObject.gd"
 
 onready var sprite = $Pivot/Sprite
 
