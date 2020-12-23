@@ -4,13 +4,13 @@
 [ext_resource path="res://Demo/demo_tiles.tres" type="TileSet" id=2]
 [ext_resource path="res://Scripts/Overworld.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/Objects/TransitionZone.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Demo/DemoActor.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Demo/Lillypad.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Characters/DemoActor.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Objects/Lillypad.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Demo/introtext.png" type="Texture" id=7]
 [ext_resource path="res://Scripts/DemoActor.gd" type="Script" id=8]
 [ext_resource path="res://Scenes/Objects/Splodge.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Scenes/Objects/OGDoor.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Scenes/Objects/Node2DDoor.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/Objects/Bush.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scripts/Bush.gd" type="Script" id=11]
 
 [node name="LevelBase" type="Node2D"]
 script = ExtResource( 1 )
@@ -38,8 +38,8 @@ tile_data = PoolIntArray( -458746, 8, 0, -65538, 3, 65537, -65537, 3, 65537, -13
 script = ExtResource( 3 )
 
 [node name="TransitionZone" parent="InteractiveTerrain" instance=ExtResource( 4 )]
-position = Vector2( 136, -40 )
-target_scene = "res://Demo/House.tscn"
+position = Vector2( 136, -48 )
+target_scene = "res://Scenes/Zones/House.tscn"
 
 [node name="BaseActor" parent="InteractiveTerrain" instance=ExtResource( 5 )]
 position = Vector2( 104, 40 )
@@ -53,13 +53,12 @@ position = Vector2( 168, 24 )
 position = Vector2( 56, 168 )
 
 [node name="Splodge2" parent="InteractiveTerrain" instance=ExtResource( 9 )]
-position = Vector2( 200, 72 )
+position = Vector2( 40, 8 )
 
-[node name="Node2DDoor" parent="InteractiveTerrain" instance=ExtResource( 13 )]
-position = Vector2( 24.2251, 38.4 )
-
-[node name="Door" parent="InteractiveTerrain" instance=ExtResource( 11 )]
-position = Vector2( 56, 0 )
+[node name="Door" parent="InteractiveTerrain" instance=ExtResource( 10 )]
+position = Vector2( 136, -20 )
+script = ExtResource( 11 )
+obj_type = 0
 
 [node name="AlwaysOnTop" type="TileMap" parent="."]
 z_index = 4096
