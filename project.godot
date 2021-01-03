@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="withOurPowersCombined"
-run/main_scene="res://Demo/Main.tscn"
+run/main_scene="res://Demo/Lobby.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -24,6 +24,7 @@ config/icon="res://icon.png"
 GameData="*res://Scripts/Globals/GameData.gd"
 InputSystem="*res://Scripts/Globals/InputSystem.gd"
 UI="*res://Scenes/UI.tscn"
+NETWORK="*res://Scripts/Globals/NETWORK.gd"
 
 [input]
 

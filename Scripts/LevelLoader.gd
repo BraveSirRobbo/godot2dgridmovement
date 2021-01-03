@@ -2,10 +2,6 @@ extends Node2D
 export var player = "res://Scenes/Characters/Player.tscn"
 
 
-func _ready():
-	instantiate_player()
-
-
 func instantiate_player():
 	# This sets the player to appear at the correct area when loading into a new
 	# zone
@@ -26,3 +22,5 @@ func instantiate_player():
 	# "seamless" feel
 	if GameData.zone_load_facing_direction:
 		player_spawn.update_facing(GameData.zone_load_facing_direction)
+	
+	return player_spawn
