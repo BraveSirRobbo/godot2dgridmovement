@@ -41,7 +41,7 @@ script = ExtResource( 3 )
 position = Vector2( 136, -48 )
 target_scene = "res://Scenes/Zones/House.tscn"
 
-[node name="BaseActor" parent="InteractiveTerrain" instance=ExtResource( 5 )]
+[node name="Scarebird" parent="InteractiveTerrain" instance=ExtResource( 5 )]
 position = Vector2( 104, 40 )
 script = ExtResource( 8 )
 dir = 1
@@ -55,7 +55,7 @@ position = Vector2( 56, 168 )
 [node name="Splodge2" parent="InteractiveTerrain" instance=ExtResource( 9 )]
 position = Vector2( 40, 8 )
 
-[node name="Door" parent="InteractiveTerrain" instance=ExtResource( 10 )]
+[node name="Bush" parent="InteractiveTerrain" instance=ExtResource( 10 )]
 position = Vector2( 136, -20 )
 script = ExtResource( 11 )
 obj_type = 0

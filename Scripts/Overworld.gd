@@ -86,4 +86,4 @@ func process_actor_spawn_conditions():
 # checks if 2 splodges have been squished - open door
 func check_splodges():
 	if GameData.splodges_squished == 2:
-		$Door.queue_free()
+		$Bush.queue_free()
