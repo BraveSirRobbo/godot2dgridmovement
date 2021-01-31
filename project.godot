@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="withOurPowersCombined"
-run/main_scene="res://Demo/Lobby.tscn"
+run/main_scene="res://Demo/JoinMenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]

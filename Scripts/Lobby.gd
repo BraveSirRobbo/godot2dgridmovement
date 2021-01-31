@@ -1,7 +1,11 @@
 extends Control
 
-func _on_Host_pressed():
-	NETWORK.create_server()
+func _ready():
+	NETWORK.connect("playerNumberChanged", self, "updatePlayerCount")
 
-func _on_Join_pressed():
-	NETWORK.join_server()
+func _on_Start_pressed():
+	return
+
+func updatePlayerCount():
+	var noPlayers = NETWORK.players.size()
+	$Menu/Butts.text = "Number of Players: " + str(noPlayers)

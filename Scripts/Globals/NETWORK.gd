@@ -1,7 +1,9 @@
 extends Node
 
-var lobby = preload("res://Demo/Lobby.tscn").instance()
+var lobby = preload("res://Demo/JoinMenu.tscn").instance()
 var map = preload("res://Demo/Main.tscn").instance()
+var players = []
+signal playerNumberChanged
 
 func _ready():
 	get_tree().connect("network_peer_connected", self, "_on_network_peer_connected")
@@ -13,19 +15,21 @@ func create_server():
 	var peer = NetworkedMultiplayerENet.new()
 	peer.create_server(4242, 32)
 	get_tree().set_network_peer(peer)
-
-	load_game()
+	players.append(get_tree().get_network_unique_id())
 
 func join_server():
 	var peer = NetworkedMultiplayerENet.new()
 	peer.create_client("127.0.0.1", 4242)
 	get_tree().set_network_peer(peer)
-
+	print("Joined server")
 	# If server found sends the signal "_on_connected_to_server" to load the game
+
+func start_server():
+	load_game()
 
 func load_game():
 	get_tree().get_root().add_child(map)
-	get_tree().get_root().get_node("Lobby").queue_free()
+	get_tree().get_root().get_node("JoinMenu").queue_free()
 	spawn_player(get_tree().get_network_unique_id())
 
 func spawn_player(id):
@@ -33,12 +37,18 @@ func spawn_player(id):
 	player.name = str(id)
 	player.set_network_master(id)
 
-func _on_network_peer_connected(id):
-	spawn_player(id)
+#func _on_network_peer_connected(id):
+#	spawn_player(id)
 
 func _on_network_peer_disconnected(id):
 	get_tree().get_root().find_node(str(id), true, false).queue_free()
 
+func _on_network_peer_connected(id):
+	players.append(id)
+	print("Player no. " + str(id) + " has joined")
+	print("Current players: " + str(players))
+	emit_signal("playerNumberChanged")
+	
 func _on_connected_to_server():
 	load_game()
 

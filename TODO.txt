@@ -1,0 +1,19 @@
+Networking:
+	Two independent clients
+		clients only own one actor each
+		actors moving displays for others
+	House issue
+	Over internet
+
+First level design
+
+Handle controls
+
+Menus
+	Proper Job Lobby
+
+Pictures
+
+Noises
+
+fuck with people
