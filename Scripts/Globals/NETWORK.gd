@@ -1,14 +1,12 @@
 extends Node
 
 var lobby = preload("res://Demo/JoinMenu.tscn").instance()
-var map = preload("res://Demo/Main.tscn").instance()
 var players = []
 signal playerNumberChanged
 
 func _ready():
 	get_tree().connect("network_peer_connected", self, "_on_network_peer_connected")
-	get_tree().connect("network_peer_disconnected", self, "_on_network_peer_disconnected")
-	get_tree().connect("connected_to_server", self, "_on_connected_to_server")
+	#get_tree().connect("network_peer_disconnected", self, "_on_network_peer_disconnected")
 	get_tree().connect("server_disconnected", self, "_on_server_disconnected")
 
 func create_server():
@@ -24,33 +22,14 @@ func join_server():
 	print("Joined server")
 	# If server found sends the signal "_on_connected_to_server" to load the game
 
-func start_server():
-	load_game()
-
-func load_game():
-	get_tree().get_root().add_child(map)
-	get_tree().get_root().get_node("JoinMenu").queue_free()
-	spawn_player(get_tree().get_network_unique_id())
-
-func spawn_player(id):
-	var player = get_tree().get_root().get_node("LevelBase").instantiate_player()
-	player.name = str(id)
-	player.set_network_master(id)
-
-#func _on_network_peer_connected(id):
-#	spawn_player(id)
-
-func _on_network_peer_disconnected(id):
-	get_tree().get_root().find_node(str(id), true, false).queue_free()
+#func _on_network_peer_disconnected(id):
+#	get_tree().get_root().find_node(str(id), true, false).queue_free()
 
 func _on_network_peer_connected(id):
 	players.append(id)
 	print("Player no. " + str(id) + " has joined")
 	print("Current players: " + str(players))
 	emit_signal("playerNumberChanged")
-	
-func _on_connected_to_server():
-	load_game()
 
 func _on_server_disconnected():
 	get_tree().get_root().add_child(lobby)

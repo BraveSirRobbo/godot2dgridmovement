@@ -1,7 +1,6 @@
 extends Node2D
 export var player = "res://Scenes/Characters/Player.tscn"
 
-
 func instantiate_player():
 	# This sets the player to appear at the correct area when loading into a new
 	# zone
@@ -24,3 +23,12 @@ func instantiate_player():
 		player_spawn.update_facing(GameData.zone_load_facing_direction)
 	
 	return player_spawn
+
+func spawnPlayers():
+	print("attempting game load")
+	spawn_player(get_tree().get_network_unique_id())
+
+func spawn_player(id):
+	var player = instantiate_player()
+	player.name = str(id)
+	player.set_network_master(id)
