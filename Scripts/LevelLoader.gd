@@ -26,7 +26,8 @@ func instantiate_player():
 
 func spawnPlayers():
 	print("attempting game load")
-	spawn_player(get_tree().get_network_unique_id())
+#	spawn_player(get_tree().get_network_unique_id())
+	spawn_player(0)
 
 func spawn_player(id):
 	var player = instantiate_player()

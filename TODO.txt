@@ -1,7 +1,7 @@
 Networking:
 	Two independent clients
-		clients only own one actor each
-		actors moving displays for others
+		ownership
+		multiplicity
 	House issue
 	Over internet
 
