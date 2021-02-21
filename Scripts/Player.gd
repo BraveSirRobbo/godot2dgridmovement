@@ -1,10 +1,11 @@
 extends "res://Scripts/Actor.gd"
 
 func _process(delta):
-	if InputSystem.input_activation:
-		rpc("activate_object")
-	elif InputSystem.input_direction:
-		rpc("target_position", InputSystem.input_direction)
+	if is_network_master():
+		if InputSystem.input_activation:
+			rpc("activate_object")
+		elif InputSystem.input_direction:
+			rpc("target_position", InputSystem.input_direction)
 
 
 # Make a vector of the direction we're facing, then ask the grid to interact

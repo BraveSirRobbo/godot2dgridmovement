@@ -1,7 +1,6 @@
 Networking:
 	Two independent clients
-		ownership
-		multiplicity
+		Refactor spawn points for multiple players
 	House issue
 	Over internet
 
