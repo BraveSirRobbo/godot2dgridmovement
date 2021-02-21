@@ -1,5 +1,9 @@
 extends "res://Scripts/Actor.gd"
 
+func _ready():
+	if is_network_master():
+		$Pivot/PlayerCamera.make_current()
+
 func _process(delta):
 	if is_network_master():
 		if InputSystem.input_activation:

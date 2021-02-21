@@ -1,6 +1,4 @@
 Networking:
-	Two independent clients
-		Fix b0rked camera
 	House issue
 	Over internet
 
