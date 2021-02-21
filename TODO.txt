@@ -1,6 +1,6 @@
 Networking:
 	Two independent clients
-		Refactor spawn points for multiple players
+		Fix b0rked camera
 	House issue
 	Over internet
 

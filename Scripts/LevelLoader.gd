@@ -4,25 +4,16 @@ export var player = "res://Scenes/Characters/Player.tscn"
 func instantiate_player(id):
 	# This sets the player to appear at the correct area when loading into a new
 	# zone
-	var spawn_points = $"Non-InteractiveTerrain".get_children()
-	var index = GameData.zone_load_spawn_point
-
-	# If we somehow don't have that spawn point, fall back to 0
-	if len(spawn_points) <= index:
-		index = 0
-
+	var spawn_name = GameData.zone_load_spawn_point
+	var spawn_points = $"Non-InteractiveTerrain".get_node(spawn_name).get_children()
 
 	# Spawn the player and add to scene
 	var player_spawn = load(player).instance()
 	$InteractiveTerrain.add_child(player_spawn)
 
 	# Set player at the correct position (spawn point of zone)
-	var load_offset
-	if id > 1:
-		load_offset = Vector2(0, 16)
-	else:
-		load_offset = Vector2(0, 0)
-	player_spawn.position = spawn_points[index].position + load_offset
+	var player_offset = int(id > 1)
+	player_spawn.position = spawn_points[player_offset].position
 	
 	# Make the player face the direction from last movement to create a
 	# "seamless" feel
