@@ -1,6 +1,5 @@
 Networking:
 	House issue
-	Over internet
 
 First level design
 
