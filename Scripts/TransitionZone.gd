@@ -1,7 +1,7 @@
 extends "res://Scripts/OverworldObject.gd"
 
 export var target_scene = ""
-export var target_spawn_point = 0
+export var target_spawn_point = ""
 
 func do_what_this_object_does():
 	

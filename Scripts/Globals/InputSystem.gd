@@ -8,7 +8,7 @@ func _ready():
 	set_pause_mode(PAUSE_MODE_PROCESS)
 
 
-func _process(delta):
+func _process(_delta):
 	input_direction = get_input_direction()
 	input_activation = get_input_activation()
 

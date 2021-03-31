@@ -95,7 +95,6 @@ vframes = 3
 hframes = 4
 
 [node name="PlayerCamera" type="Camera2D" parent="Pivot"]
-current = true
 zoom = Vector2( 0.2, 0.2 )
 
 [node name="Tween" type="Tween" parent="."]

@@ -21,7 +21,7 @@ func _ready():
 
 
 # Actor targets a position to move to
-func target_position(move_vector):
+remotesync func target_position(move_vector):
 	var target = overworld.request_move(self, move_vector)
 	# Whether we can move or not, update our facing first
 	update_facing(move_vector)

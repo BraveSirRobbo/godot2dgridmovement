@@ -1,0 +1,18 @@
+Networking:
+	House issue
+	Sync the Number of Players Counter in lobby (currently NETWORK._on_network_peer_connected.emit_signal()ing, we want an rpc call ?)
+
+First level design
+
+Handle controls
+
+Menus
+	Proper Job Lobby
+
+Pictures
+
+Noises
+
+fuck with people
+
+make our to do list more descriptive/memorable
