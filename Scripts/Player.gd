@@ -1,15 +1,35 @@
 extends "res://Scripts/Actor.gd"
 
+enum Effectors {RIGHT, LEFT, UP, DOWN}
+
+var inputs = {
+	"ui_right": Effectors.RIGHT,
+	"ui_left": Effectors.LEFT,
+	"ui_up": Effectors.UP,
+	"ui_down": Effectors.DOWN,
+	}
+
 func _ready():
 	if is_network_master():
 		$Pivot/PlayerCamera.make_current()
 
 func _process(delta):
 	if is_network_master():
-		if InputSystem.input_activation:
+		if get_input_activation():
 			rpc("activate_object")
-		elif InputSystem.input_direction:
-			rpc("target_position", InputSystem.input_direction)
+		elif get_input_direction():
+			rpc("target_position", get_input_direction())
+
+func get_input_direction():
+	var horizontal = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
+	var vertical = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
+	return Vector2(horizontal, vertical if horizontal == 0 else 0)
+
+func get_input_activation():
+	return Input.is_action_just_pressed("ui_accept")
+
+
+
 
 
 # Make a vector of the direction we're facing, then ask the grid to interact

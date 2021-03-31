@@ -8,19 +8,18 @@ func _ready():
 	set_pause_mode(PAUSE_MODE_PROCESS)
 
 
-func _process(_delta):
-	input_direction = get_input_direction()
-	input_activation = get_input_activation()
+#func _process(_delta):
+#	input_direction = get_input_direction()
+#	input_activation = get_input_activation()
+
+#func get_input_direction():
+#	var horizontal = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
+#	var vertical = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
+#	return Vector2(horizontal, vertical if horizontal == 0 else 0)
 
 
-func get_input_direction():
-	var horizontal = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
-	var vertical = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
-	return Vector2(horizontal, vertical if horizontal == 0 else 0)
-
-
-func get_input_activation():
-	return Input.is_action_just_pressed("ui_accept")
+#func get_input_activation():
+#	return Input.is_action_just_pressed("ui_accept")
 
 
 # Extremely useful for things like stopping "interact" from looping
