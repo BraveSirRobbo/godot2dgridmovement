@@ -12,7 +12,7 @@ func _on_Start_pressed():
 remotesync func buildWorld():
 	get_tree().get_root().add_child(map)
 	get_tree().get_root().get_node("Lobby").queue_free()
-	get_tree().get_root().get_node("LevelBase").spawn_player()
+	get_tree().get_root().get_node("LevelBase").spawn_player() #emit signals here ?
 
 func updatePlayerCount():
 	var noPlayers = NETWORK.players.size()
