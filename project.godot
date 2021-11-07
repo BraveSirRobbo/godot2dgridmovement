@@ -31,6 +31,10 @@ InputSystem="*res://Scripts/Globals/InputSystem.gd"
 UI="*res://Scenes/UI.tscn"
 NETWORK="*res://Scripts/Globals/NETWORK.gd"
 
+[editor_plugins]
+
+enabled=PoolStringArray( "debug_port_fixer" )
+
 [gdnative]
 
 singletons=[ "res://git_api.gdnlib" ]

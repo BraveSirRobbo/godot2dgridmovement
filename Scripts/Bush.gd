@@ -11,6 +11,8 @@ func spawn_condition():
 func _ready():
 	pass # Replace with function body.
 
+func interact(from_direction):
+	print("you rustle around in the bush and get bitten by a  pterodactyl. ouch !")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
