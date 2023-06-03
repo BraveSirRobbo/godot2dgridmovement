@@ -26,7 +26,7 @@ func get_overworld_obj(coordinates):
 			stale_children = true
 			continue
 		else:
-			if world_to_map(node.position) == coordinates:
+			if local_to_map(node.position) == coordinates:
 				return(node)
 	if stale_children:
 		stale_children = false
@@ -34,8 +34,8 @@ func get_overworld_obj(coordinates):
 
 
 func request_interaction(requesting_object, direction):
-	var cell_start = world_to_map(requesting_object.position)
-	var cell_target = world_to_map(requesting_object.position) + direction
+	var cell_start = local_to_map(requesting_object.position)
+	var cell_target = local_to_map(requesting_object.position) + direction
 	var cell_obj = get_overworld_obj(cell_target)
 	if !cell_obj:
 		return
@@ -45,8 +45,8 @@ func request_interaction(requesting_object, direction):
 
 
 func request_move(requesting_object, direction):
-	var cell_start = world_to_map(requesting_object.position)
-	var cell_target = world_to_map(requesting_object.position) + direction
+	var cell_start = local_to_map(requesting_object.position)
+	var cell_target = local_to_map(requesting_object.position) + direction
 	var cell_target_type = get_cellv(cell_target)
 
 	if cell_target_type == CELL_TYPES.EMPTY:
@@ -67,7 +67,7 @@ func update_overworld_obj_position(requesting_object, cell_start, cell_target):
 
 	# Divide by 2 because location 0,0 starts from the top left of the cell
 	# and we want the object to be "in the middle" of the grid cell
-	return map_to_world(cell_target) + cell_size / 2
+	return map_to_local(cell_target) + cell_size / 2
 
 
 # removes an object from children array. The object should queue_free itself,

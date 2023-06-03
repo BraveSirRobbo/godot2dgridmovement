@@ -1,9 +1,9 @@
 extends Node2D
 
-onready var overworld = get_parent()
+@onready var overworld = get_parent()
 
 enum CELL_TYPES { ACTOR, OBJECT }
-export(CELL_TYPES) var obj_type = CELL_TYPES.OBJECT
+@export var obj_type: CELL_TYPES = CELL_TYPES.OBJECT
 
 func do_what_this_object_does():
 	print(name, " is an OverworldObject that doesn't do anything.")

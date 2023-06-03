@@ -11,7 +11,7 @@ z_index = -4096
 cell_size = Vector2( 16, 16 )
 format = 1
 
-[node name="PlayerSpawn0" type="Position2D" parent="Non-InteractiveTerrain"]
+[node name="PlayerSpawn0" type="Marker2D" parent="Non-InteractiveTerrain"]
 position = Vector2( 8, 8 )
 
 [node name="InteractiveTerrain" type="TileMap" parent="."]

@@ -1,15 +1,15 @@
 extends "res://Scripts/OverworldObject.gd"
 
-onready var sprite = $Pivot/Sprite
+@onready var sprite = $Pivot/Sprite2D
 
 enum DIR { UP, DOWN, LEFT, RIGHT }
 # Allow changing the default facing direction in editor
-export(DIR) var dir = DIR.DOWN
+@export var dir: DIR = DIR.DOWN
 
 # Here you can set which frames represent facing direction
-export var down_frame = 0
-export var up_frame = 8
-export var horiz_frame = 4
+@export var down_frame = 0
+@export var up_frame = 8
+@export var horiz_frame = 4
 
 func _ready():
 	# Set up z index here and simply match it to the y value
@@ -21,7 +21,7 @@ func _ready():
 
 
 # Actor targets a position to move to
-remotesync func target_position(move_vector):
+@rpc("any_peer", "call_local") func target_position(move_vector):
 	var target = overworld.request_move(self, move_vector)
 	# Whether we can move or not, update our facing first
 	update_facing(move_vector)
@@ -77,7 +77,7 @@ func move_to(target_position):
 	$Tween.start()
 
 	# Stop the function execution until the animation finished
-	yield($AnimationPlayer, "animation_finished")
+	await $AnimationPlayer.animation_finished
 	# Movement complete. Actor is again "interactive"
 	set_process(true)
 
@@ -91,7 +91,7 @@ func interact(from_direction):
 func bump():
 	set_process(false)
 	$AnimationPlayer.play("bump")
-	yield($AnimationPlayer, "animation_finished")
+	await $AnimationPlayer.animation_finished
 	set_process(true)
 
 

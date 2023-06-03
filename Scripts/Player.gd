@@ -1,11 +1,11 @@
 extends "res://Scripts/Actor.gd"
 
 func _ready():
-	if is_network_master():
+	if is_multiplayer_authority():
 		$Pivot/PlayerCamera.make_current()
 
 func _process(delta):
-	if is_network_master():
+	if is_multiplayer_authority():
 		if InputSystem.input_activation:
 			rpc("activate_object")
 		elif InputSystem.input_direction:
@@ -14,7 +14,7 @@ func _process(delta):
 
 # Make a vector of the direction we're facing, then ask the grid to interact
 # with whatever is there
-remotesync func activate_object():
+@rpc("any_peer", "call_local") func activate_object():
 	var direction_of_interaction = Vector2((int(dir == DIR.RIGHT) - int(
 			dir == DIR.LEFT)), (int(dir == DIR.DOWN) - int(dir == DIR.UP)))
 	overworld.request_interaction(self, direction_of_interaction)

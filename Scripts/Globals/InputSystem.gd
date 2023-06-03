@@ -5,7 +5,7 @@ var input_activation
 
 func _ready():
 	# Do not disable this when game is paused
-	set_pause_mode(PAUSE_MODE_PROCESS)
+	set_process_mode(PROCESS_MODE_ALWAYS)
 
 
 func _process(_delta):
@@ -36,7 +36,7 @@ func neutralize_inputs():
 func disable_input_until(wait_for_this_object, to_finish_this):
 	neutralize_inputs()
 	set_process(false)
-	yield(wait_for_this_object, to_finish_this)
+	await wait_for_this_object.to_finish_this
 	set_process(true)
 
 

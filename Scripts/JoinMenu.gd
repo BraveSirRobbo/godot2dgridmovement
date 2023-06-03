@@ -1,6 +1,6 @@
 extends Control
 
-var lobby = preload("res://Demo/Lobby.tscn").instance()
+var lobby = preload("res://Demo/Lobby.tscn").instantiate()
 
 
 func _on_Host_pressed():
