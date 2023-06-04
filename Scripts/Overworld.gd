@@ -35,7 +35,7 @@ func get_overworld_obj(coordinates):
 
 func request_interaction(requesting_object, direction):
 	var cell_start = local_to_map(requesting_object.position)
-	var cell_target = local_to_map(requesting_object.position) + direction
+	var cell_target = local_to_map(requesting_object.position) + Vector2i(direction)
 	var cell_obj = get_overworld_obj(cell_target)
 	if !cell_obj:
 		return
@@ -46,8 +46,8 @@ func request_interaction(requesting_object, direction):
 
 func request_move(requesting_object, direction):
 	var cell_start = local_to_map(requesting_object.position)
-	var cell_target = local_to_map(requesting_object.position) + direction
-	var cell_target_type = get_cellv(cell_target)
+	var cell_target = local_to_map(requesting_object.position) + Vector2i(direction)
+	var cell_target_type = get_cell_source_id(0, cell_target)
 
 	if cell_target_type == CELL_TYPES.EMPTY:
 		var cell_obj = get_overworld_obj(cell_target)
@@ -63,12 +63,11 @@ func request_move(requesting_object, direction):
 
 func update_overworld_obj_position(requesting_object, cell_start, cell_target):
 	# The cell the moving object was in is now free
-	set_cellv(cell_start, CELL_TYPES.EMPTY)
+	set_cell(0, cell_start, CELL_TYPES.EMPTY)
 
 	# Divide by 2 because location 0,0 starts from the top left of the cell
 	# and we want the object to be "in the middle" of the grid cell
-	return map_to_local(cell_target) + cell_size / 2
-
+	return map_to_local(cell_target) + Vector2(tile_set.tile_size) / 2
 
 # removes an object from children array. The object should queue_free itself,
 # but we want the overworld to immediately know this cell is no longer occupied

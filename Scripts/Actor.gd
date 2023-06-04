@@ -52,15 +52,15 @@ func update_facing(direction):
 
 
 # Smoothly moves actor to target position
-func move_to(target_position):
+func move_to(target_pos):
 	# Begin movement. Actor is non-interactive while moving.
 	set_process(false)
 	process_movement_animation()
 
 	# Move the node to the target cell instantly,
 	# and animate the sprite moving from the start to the target cell
-	var move_direction = (target_position - position).normalized()
-	var current_pos = - move_direction * overworld.cell_size
+	var move_direction = (target_pos - position).normalized()
+	var current_pos = - Vector2i(move_direction) * overworld.tile_set.tile_size
 	# Keep the pivot where it is, because we are about to move the whole
 	# transform and it will cause a glitchy animation where the sprite warps
 	# for a single frame to the target location (with the transform) and then
@@ -68,13 +68,17 @@ func move_to(target_position):
 	$Pivot.position = current_pos
 	# Move the pivot point from the current position to 0,0
 	# (relative to parent transform) basically just catch up with the parent
-	$Tween.interpolate_property($Pivot, "position", current_pos, Vector2(),
-			$AnimationPlayer.current_animation_length, Tween.TRANS_LINEAR,
-			Tween.EASE_IN)
-	position = target_position
+	var tween = create_tween()
+	
+	tween.tween_property($Pivot, "position", Vector2(),
+			$AnimationPlayer.current_animation_length
+			).set_trans(Tween.TRANS_LINEAR
+			).set_ease(Tween.EASE_IN
+			).from(current_pos)
+
+	position = target_pos
 	# This is basically a "sort y order" option for children (non-cells)
 	set_z_index(position.y)
-	$Tween.start()
 
 	# Stop the function execution until the animation finished
 	await $AnimationPlayer.animation_finished

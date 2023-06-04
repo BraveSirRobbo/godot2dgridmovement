@@ -25,4 +25,4 @@ extends Node2D
 func spawn_player():
 	# Spawn your own player, broadcasting to other cliemnts
 	print("attempting to create player actor")
-	rpc("instantiate_player", get_tree().get_unique_id())
+	rpc("instantiate_player", multiplayer.get_unique_id())
